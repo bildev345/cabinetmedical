@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            // pour le role il peut etre soit medecin soit assistant
+            // pour le role il peut etre soit medecin soit assistant soit patient
             $table->string('role');
             $table->rememberToken();
             $table->timestamps();
