@@ -2,31 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\AuthControllerRequest;
 use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function login(Request $req)
+    public function login(AuthControllerRequest $req)
     {
-        $req->validate([
-            'email' => 'required|email|exists:users,email',
-            'password' => 'required',
-        ]);
         if(Auth::attempt(['email'=> $req->email,'password'=>$req->password])){
             $req->session()->regenerate();
-            return response()->json(['message'=>'Connexion réussie'],200);
+            // changer la route home par votre route cible
+            return redirect()->route('home')->with('success' , 'vous etes authentifié avec succés');
         }
-
-        return response()->json(['message'=>'mot de passe or email est incorrecte'],401);
+        return redirect()->back()->withErrors([
+            'password' => 'Mot de passe incorrect.',
+        ]);
     }
     public function logout(){
         Auth::logout();
-        return response()->json(['message' => 'vous etes déconnecté avec success'], 200);
+        // changer la route home par votre route cible
+        return redirect()->route('login')->with('success', 'vous avez déconnecté avec succés');
     }
-
-
-
-
 }
