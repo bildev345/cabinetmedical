@@ -2,11 +2,9 @@
 <html lang="en">
 <head>
 
-<<<<<<< HEAD
+
      <title>Santé - Modèle de site Web médical</title>
-=======
-     <title>Health - Medical Website Template</title>
->>>>>>> be3242ba763d4add58701928d2e9ecf742e3c92d
+
 <!--
 
 Template 2098 Health
@@ -26,12 +24,6 @@ http://www.tooplate.com/view/2098-health
      <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
      <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
      <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
-
-<<<<<<< HEAD
-
-
-=======
->>>>>>> be3242ba763d4add58701928d2e9ecf742e3c92d
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="{{ asset('css/tooplate-style.css') }}">
 
