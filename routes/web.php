@@ -14,11 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-/* 
+/*
 décommenter ca et changer suivant vos routes et vos vues
 Route::get('/home' , function () {
     return view('home');
@@ -30,3 +26,19 @@ Route::get('/login', function () {
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+
+// Cette route retourne la vue 'home'
+Route::get('/', function () {
+    return view('elements.home');
+});
+
+// Cette route retourne la vue 'news'
+Route::get('/news', function () {
+    return view('elements.news');
+});
+
+// Cette route retourne la vue 'news'
+Route::get('/contact', function () {
+    return view('elements.contact');
+});
