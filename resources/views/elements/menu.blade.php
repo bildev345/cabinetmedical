@@ -26,6 +26,7 @@
                             <a class="dropdown-item" href="{{ url('/') }}">Home</a><br>
                             <a class="dropdown-item" href="{{ url('/about-us') }}">About Us</a>
                             <a class="dropdown-item" href="{{ url('/services') }}">Services</a>
+                            <a class="dropdown-item" href="{{ route('documents.index') }}">Documents</a>
                             <a class="dropdown-item" href="{{ url('/blog') }}">News</a>
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
