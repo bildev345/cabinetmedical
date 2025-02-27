@@ -9,7 +9,6 @@ class Document extends Model
 {
     use HasFactory;
 
-    public $timestamps = false;
     protected $disk = 'local'; 
     protected $guarded  = ["id"];
 

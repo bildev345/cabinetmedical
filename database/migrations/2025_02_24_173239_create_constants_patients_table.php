@@ -11,7 +11,6 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::disableForeignKeyConstraints();
 
         Schema::create('constant_patients', function (Blueprint $table) {
             $table->id();
@@ -19,9 +18,9 @@ return new class extends Migration
             $table->foreignId('constant_id')->constrained();
             $table->date('date');
             $table->text('valeur');
-        });
+            $table->timestamps();
 
-        Schema::enableForeignKeyConstraints();
+        });
     }
 
     /**
