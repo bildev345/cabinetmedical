@@ -18,9 +18,10 @@ return new class extends Migration
             $table->dateTime('date_fin');
             $table->foreignId('etat_consultation_id')->constrained();
             $table->foreignId('patient_id')->constrained();
-            $table->foreignId('type_consultation_id');
+            $table->foreignId('type_consultation_id')->constrained();
             $table->longText('rapport');
             $table->boolean('gratuit');
+            $table->timestamps();
         });
 
     }
