@@ -10,31 +10,29 @@
               </button>
 
               <!-- lOGO TEXT HERE -->
-              <a href="index.html" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a>
+              <a href="index.html" class="navbar-brand"><span style="font-weight: bold;color: rgb(101, 161, 3);font-size: 1.3em;">C</span>abinet Médical</a>
          </div>
 
          <!-- MENU LINKS -->
          <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
-                   <li><a href="{{ url('/') }}" class="smoothScroll">Home</a></li>
+                   <li><a href="{{ url('/') }}" class="smoothScroll">Accueil</a></li>
                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Pages
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="{{ url('/') }}">Home</a><br>
-                            <a class="dropdown-item" href="{{ url('/about-us') }}">About Us</a>
+                            <a class="dropdown-item" href="{{ url('/') }}">Accueil</a><br>
+                            <a class="dropdown-item" href="{{ url('/about-us') }}">À Propos</a>
                             <a class="dropdown-item" href="{{ url('/services') }}">Services</a>
-                            <a class="dropdown-item" href="{{ url('/blog') }}">News</a>
+                            <a class="dropdown-item" href="{{ url('/blog') }}">Actualités</a>
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
-                            <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
-
                         </div>
                     </li>
-                   <li><a href="{{ url('/news') }}" class="smoothScroll">News</a></li>
+                   <li><a href="{{ url('/news') }}" class="smoothScroll">Actualités</a></li>
                    <li><a href="#google-map" class="smoothScroll">Contact</a></li>
-                   <li class="appointment-btn"><a href="{{ url('/contact') }}">Make an appointment</a></li>
+                   <li class="appointment-btn"><a href="{{ url('/contact') }}">Prendre un rendez-vous</a></li>
               </ul>
          </div>
 
