@@ -48,4 +48,5 @@ Route::get('/contact', function () {
 Route::resource('/documents', DocumentController::class);
 Route::resource('/type_documents', TypeDocumentController::class);
 Route::get('/documents/{document}/download', [DocumentController::class, 'download'])
-    ->name('documents.download');
+->name('documents.download');
+

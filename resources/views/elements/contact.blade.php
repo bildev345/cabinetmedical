@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('main')
+@section('mainx')
 
      <!-- MAKE AN APPOINTMENT -->
      <section id="appointment" data-stellar-background-ratio="3">
