@@ -26,7 +26,12 @@
                             <a class="dropdown-item" href="{{ url('/') }}">Accueil</a><br>
                             <a class="dropdown-item" href="{{ url('/about-us') }}">À Propos</a>
                             <a class="dropdown-item" href="{{ url('/services') }}">Services</a>
+<<<<<<< HEAD
                             <a class="dropdown-item" href="{{ url('/blog') }}">Actualités</a>
+=======
+                            <a class="dropdown-item" href="{{ route('documents.index') }}">Documents</a>
+                            <a class="dropdown-item" href="{{ url('/blog') }}">News</a>
+>>>>>>> 18700d8a22d21fb124e985826b60a6da15c88ff1
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
                         </div>
                     </li>
