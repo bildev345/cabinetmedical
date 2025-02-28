@@ -10,7 +10,7 @@
               </button>
 
               <!-- lOGO TEXT HERE -->
-              <a href="index.html" class="navbar-brand"><i class="fa fa-h-square"></i>Cabinet Medical</a>
+              <a href="index.html" class="navbar-brand"><i class="fa fa-h-square"></i>ealth Center</a>
          </div>
 
          <!-- MENU LINKS -->
@@ -26,14 +26,16 @@
                             <a class="dropdown-item" href="{{ url('/') }}">Home</a><br>
                             <a class="dropdown-item" href="{{ url('/about-us') }}">About Us</a>
                             <a class="dropdown-item" href="{{ url('/services') }}">Services</a>
+                            <a class="dropdown-item" href="{{ route('documents.index') }}">Documents</a>
                             <a class="dropdown-item" href="{{ url('/blog') }}">News</a>
+                            <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
 
                         </div>
                     </li>
                    <li><a href="{{ url('/news') }}" class="smoothScroll">News</a></li>
+                   <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                    <li class="appointment-btn"><a href="{{ url('/contact') }}">Make an appointment</a></li>
-                   <li class="appointment-btn"><a href="{{ url('/login') }}"><img src="images/user.png" alt="" width="22px"></a></li>
               </ul>
          </div>
 

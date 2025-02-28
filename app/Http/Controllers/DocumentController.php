@@ -145,5 +145,4 @@ class DocumentController extends Controller
             'document-' . $document->id . '.' . pathinfo($document->fichier, PATHINFO_EXTENSION)
         );
     }
-
 }
