@@ -42,3 +42,8 @@ Route::get('/news', function () {
 Route::get('/contact', function () {
     return view('elements.contact');
 });
+
+Route::resource('/documents', DocumentController::class);
+Route::resource('/type_documents', TypeDocumentController::class);
+Route::get('/documents/{document}/download', [DocumentController::class, 'download'])
+    ->name('documents.download');
