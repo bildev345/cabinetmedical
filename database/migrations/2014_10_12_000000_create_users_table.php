@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('nom');
+            $table->string('prenom');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            // pour le role il peut etre soit medecin soit assistant soit patient
-            $table->string('role');
+            // pour le role il peut etre soit medecin soit assistante soit patient
+            $table->enum('role', ['medecin', 'assistante', 'patient']);
             $table->rememberToken();
             $table->timestamps();
         });
