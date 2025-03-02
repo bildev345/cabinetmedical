@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('medicament_id')->constrained();
             $table->foreignId('prescription_id')->constrained();
             $table->text('note');
+            $table->timestamps();
         });
 
     }

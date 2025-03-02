@@ -25,6 +25,7 @@ return new class extends Migration
             $table->float('poids');
             $table->string('groupe_sangin');
             $table->boolean('assure');
+            $table->timestamps();
         });
     }
 
