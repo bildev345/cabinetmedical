@@ -19,7 +19,6 @@ return new class extends Migration
             $table->foreignId('type_document_id')->constrained();
             $table->foreignId('patient_id')->constrained();
             $table->timestamps();
-
         });
     }
 

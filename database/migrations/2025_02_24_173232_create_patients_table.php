@@ -26,7 +26,6 @@ return new class extends Migration
             $table->string('groupe_sangin');
             $table->boolean('assure');
             $table->timestamps();
-
         });
     }
 

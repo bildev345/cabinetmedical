@@ -17,7 +17,6 @@ return new class extends Migration
             $table->text('rapport');
             $table->foreignId('consultation_id')->constrained();
             $table->timestamps();
-
         });
     }
 

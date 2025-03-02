@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('etat');
             $table->string('couleur');
             $table->timestamps();
-
         });
 
     }

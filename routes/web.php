@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\TypeDocumentController;
+use App\Http\Controllers\PrescriptionController;
+use App\Http\Controllers\MedicamentController;
+
+
 
 
 /*
@@ -47,3 +51,5 @@ Route::resource('/type_documents', TypeDocumentController::class);
 Route::get('/documents/{document}/download', [DocumentController::class, 'download'])
 ->name('documents.download');
 
+Route::resource('prescriptions', PrescriptionController::class);
+Route::resource('medicaments', MedicamentController::class);

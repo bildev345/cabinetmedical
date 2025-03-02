@@ -18,7 +18,6 @@ return new class extends Migration
             $table->date('date');
             $table->text('valeur');
             $table->timestamps();
-
         });
     }
 

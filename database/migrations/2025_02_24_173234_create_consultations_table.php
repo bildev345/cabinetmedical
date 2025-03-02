@@ -22,7 +22,6 @@ return new class extends Migration
             $table->longText('rapport');
             $table->boolean('gratuit');
             $table->timestamps();
-
         });
 
     }
