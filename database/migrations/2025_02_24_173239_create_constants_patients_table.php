@@ -17,6 +17,8 @@ return new class extends Migration
             $table->foreignId('constant_id')->constrained();
             $table->date('date');
             $table->text('valeur');
+            $table->timestamps();
+
         });
     }
 

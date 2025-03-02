@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('type_consultation');
             $table->string('couleur');
+            $table->timestamps();
+
         });
     }
 

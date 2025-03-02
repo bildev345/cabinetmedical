@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('libelle_chirurgie');
             $table->text('observation');
             $table->foreignId('consultation_id')->constrained();
+            $table->timestamps();
+
         });
 
     }
