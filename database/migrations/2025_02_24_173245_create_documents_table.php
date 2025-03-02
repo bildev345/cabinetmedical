@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('fichier');
             $table->foreignId('type_document_id')->constrained();
             $table->foreignId('patient_id')->constrained();
+            $table->timestamps();
+
         });
     }
 

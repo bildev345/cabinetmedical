@@ -12,11 +12,13 @@ return new class extends Migration
     public function up(): void
     {
 
-        Schema::create('medicament_prescriptions', function (Blueprint $table) {
+        Schema::create('medicament_prescription', function (Blueprint $table) {
             $table->id();
             $table->foreignId('medicament_id')->constrained();
             $table->foreignId('prescription_id')->constrained();
             $table->text('note');
+            $table->timestamps();
+
         });
 
     }

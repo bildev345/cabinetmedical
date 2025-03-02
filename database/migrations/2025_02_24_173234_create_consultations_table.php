@@ -21,6 +21,8 @@ return new class extends Migration
             $table->foreignId('type_consultation_id')->constrained();
             $table->longText('rapport');
             $table->boolean('gratuit');
+            $table->timestamps();
+
         });
 
     }

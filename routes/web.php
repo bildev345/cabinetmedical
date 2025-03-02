@@ -3,6 +3,10 @@
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\DocumentController;
+use App\Http\Controllers\TypeDocumentController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,17 +18,10 @@ use App\Http\Controllers\PatientController;
 |
 */
 
-/*
-décommenter ca et changer suivant vos routes et vos vues
-Route::get('/home' , function () {
-    return view('home');
-})->name('home');
 
-Route::get('/login', function () {
-    return view('auth.login');
-});*/
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
@@ -45,3 +42,8 @@ Route::get('/contact', function () {
 
 
 Route::resource('patients', PatientController::class);
+Route::resource('/documents', DocumentController::class);
+Route::resource('/type_documents', TypeDocumentController::class);
+Route::get('/documents/{document}/download', [DocumentController::class, 'download'])
+->name('documents.download');
+

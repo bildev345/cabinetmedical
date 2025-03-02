@@ -14,10 +14,12 @@ return new class extends Migration
 
         Schema::create('chirurgies', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('date');
+            $table->date('date');
             $table->text('libelle_chirurgie');
             $table->text('observation');
             $table->foreignId('consultation_id')->constrained();
+            $table->timestamps();
+
         });
 
     }
