@@ -15,6 +15,8 @@ return new class extends Migration
         Schema::create('constants', function (Blueprint $table) {
             $table->id();
             $table->string('constant');
+            $table->timestamps();
+
         });
 
     }
