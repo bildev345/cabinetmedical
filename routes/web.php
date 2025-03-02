@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PatientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,3 +42,6 @@ Route::get('/news', function () {
 Route::get('/contact', function () {
     return view('elements.contact');
 });
+
+
+Route::resource('patients', PatientController::class);
