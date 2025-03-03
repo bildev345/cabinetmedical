@@ -12,26 +12,35 @@ class MedicamentController extends Controller
      */
     public function index()
     {
-        $medicaments=Medicament::all();
-        return view ('medicaments.index',compact('medicamtents'));
+        $medicaments = Medicament::all();
+        return view('medicaments.index', compact('medicaments'));  
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */
     public function create()
-    {
-        return view ('medicaments.create');
-    }
+{
+    $medicaments = Medicament::all(); // Récupérer tous les médicaments (si nécessaire)
+    
+    return view('medicaments.create', compact('medicaments'));
+}
+
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        Medicament::create($request->all());
-        return redirect()->route('medicaments.index')->with('success','Medicament created');
-    }
+{
+    $validatedData = $request->validate([
+        'medicament' => 'required|string|max:255'
+    ]);
+
+    Medicament::create($validatedData);
+
+    return redirect()->route('medicaments.index')->with('success', 'Médicament ajouté avec succès.');
+}
+
 
     /**
      * Display the specified resource.
@@ -45,9 +54,10 @@ class MedicamentController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit(medicament $medicament)
-    {
-        return view ('medicaments.edit',compact('medicamtents'));
-    }
+{
+    return view('medicaments.edit', compact('medicament')); 
+}
+
 
     /**
      * Update the specified resource in storage.

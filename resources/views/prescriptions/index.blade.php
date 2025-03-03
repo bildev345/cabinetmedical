@@ -21,11 +21,12 @@
 
     <div class="d-flex justify-content-between mb-4">
         <a href="{{ route('prescriptions.create') }}" class="btn btn-success">
-            <i class="bi bi-plus-circle"></i> Ajouter une Prescription
+            <i class="bi bi-plus-circle"></i> 📤 Ajouter une Prescription
         </a>
-        <div>
-            <input type="text" class="form-control" placeholder="Recherche..." id="searchPrescription">
-        </div>
+        <a href="{{ route('medicaments.create') }}" class="bg-green-500 hover:bg-green-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                ➕ Nouveau medicaments
+            </a>
+       
     </div>
 
     <div class="table-responsive">
