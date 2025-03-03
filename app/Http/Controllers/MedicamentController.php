@@ -20,26 +20,24 @@ class MedicamentController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
-{
+    {
     $medicaments = Medicament::all(); // Récupérer tous les médicaments (si nécessaire)
     
     return view('medicaments.create', compact('medicaments'));
-}
+    }
 
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $validatedData = $request->validate([
-        'medicament' => 'required|string|max:255'
-    ]);
-
-    Medicament::create($validatedData);
-
-    return redirect()->route('medicaments.index')->with('success', 'Médicament ajouté avec succès.');
-}
+    {
+        $request->validate([
+            'medicament' => 'required|string|max:255'
+        ]);
+        Medicament::create($request->all());
+        return redirect()->route('medicaments.index')->with('success', 'Médicament ajouté avec succès.');
+    }
 
 
     /**
