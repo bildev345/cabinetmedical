@@ -1,5 +1,6 @@
 
-
+@extends('layouts.master')
+@section('main')
 <div class="container">
     <h1>Modifier la Consultation</h1>
     <form action="{{ route('consultations.update', $consultation->id) }}" method="POST">
@@ -48,9 +49,17 @@
             <textarea name="rapport" id="rapport" class="form-control">{{ $consultation->rapport }}</textarea>
         </div>
         <div class="form-group">
-            <label for="gratuit">Gratuit</label>
-            <input type="checkbox" name="gratuit" id="gratuit" value="1" {{ $consultation->gratuit ? 'checked' : '' }}>
+            <div>
+                <label for="gratuit">Gratuit : </label>
+                <label>
+                    <input type="radio" name="gratuit" value="1" {{ $consultation->gratuit ? 'checked' : '' }}> Oui
+                </label>
+                <label>
+                    <input type="radio" name="gratuit" value="0" {{ !$consultation->gratuit ? 'checked' : '' }}> Non
+                </label>
+            </div>
         </div>
         <button type="submit" class="btn btn-warning">Mettre à Jour</button>
     </form>
 </div>
+@endsection

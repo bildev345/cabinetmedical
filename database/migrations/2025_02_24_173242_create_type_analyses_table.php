@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('type_analyses', function (Blueprint $table) {
             $table->id();
             $table->string('type_analyse');
+            $table->timestamps();
+
         });
 
     }

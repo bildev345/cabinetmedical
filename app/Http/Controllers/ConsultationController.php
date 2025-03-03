@@ -8,6 +8,7 @@ use App\Models\EtatConsultation;
 use App\Models\TypeConsultation;
 use Illuminate\Http\Request;
 
+
 class ConsultationController extends Controller
 {
     // Affiche la liste des consultations
@@ -36,18 +37,26 @@ class ConsultationController extends Controller
             'patient_id' => 'required|exists:patients,id',
             'type_consultation_id' => 'required|exists:type_consultations,id',
             'rapport' => 'nullable|string',
-            'gratuit' => 'boolean',
+            'gratuit' => 'required|boolean',
         ]);
 
-        Consultation::create([
-            'date_debut' => $request->date_debut,
-            'date_fin' => $request->date_fin,
-            'etat_consultation_id' => $request->etat_consultation_id,
-            'patient_id' => $request->patient_id,
-            'type_consultation_id' => $request->type_consultation_id,
-            'rapport' => $request->rapport,
-            'gratuit' => $request->has('gratuit') ? true : false,
-        ]);
+        
+
+        try {
+            Consultation::create([
+                'date_debut' => $request->date_debut,
+                'date_fin' => $request->date_fin,
+                'etat_consultation_id' => $request->etat_consultation_id,
+                'patient_id' => $request->patient_id,
+                'type_consultation_id' => $request->type_consultation_id,
+                'rapport' => $request->rapport,
+                'gratuit' => $request->gratuit, 
+            ]);
+            return redirect()->route('consultations.index')->with('success', 'Consultation créée avec succès.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Erreur lors de l\'enregistrement : ' . $e->getMessage());
+        }
+        
 
         return redirect()->route('consultations.index')->with('success', 'Consultation créée avec succès.');
     }
@@ -59,9 +68,10 @@ class ConsultationController extends Controller
     }
 
     // Affiche le formulaire de modification d'une consultation
-    public function edit(Consultation $consultation)
+    public function edit($id)
     {
         
+        $consultation = Consultation::findOrFail($id);
         $patients = Patient::all();
         $etatConsultations = EtatConsultation::all();
         $typeConsultations = TypeConsultation::all();
@@ -72,7 +82,7 @@ class ConsultationController extends Controller
 
     // Met à jour une consultation existante
 
-    public function update(Request $request, Consultation $consultation)
+    public function update(Request $request, $id)
     {
         
         $request->validate([
@@ -85,24 +95,20 @@ class ConsultationController extends Controller
             'gratuit' => 'boolean',
         ]);
 
-        // Mise à jour de la consultation
-        $consultation->update([
-            'date_debut' => $request->date_debut,
-            'date_fin' => $request->date_fin,
-            'etat_consultation_id' => $request->etat_consultation_id,
-            'patient_id' => $request->patient_id,
-            'type_consultation_id' => $request->type_consultation_id,
-            'rapport' => $request->rapport,
-            'gratuit' => $request->has('gratuit') ? true : false,
-        ]);
+        $consultation = Consultation::findOrFail($id);
+        $consultation->update($request->all());
+
 
         return redirect()->route('consultations.index')->with('success', 'Consultation mise à jour avec succès.');
     }
 
     // Supprime une consultation
-    public function destroy(Consultation $consultation)
+
+    public function destroy($id)
     {
+        $consultation = Consultation::findOrFail($id);
         $consultation->delete();
+
         return redirect()->route('consultations.index')->with('success', 'Consultation supprimée avec succès.');
     }
 
@@ -113,22 +119,28 @@ class ConsultationController extends Controller
     }
 
     // Récupère les événements pour FullCalendar
+
     public function getEvents()
     {
-        $consultations = Consultation::with(['patient', 'etatConsultation', 'typeConsultation'])->get();
+    $consultations = Consultation::with(['patients', 'etatConsultations', 'typeConsultations'])->get();
 
-        $events = [];
+    $events = [];
 
-        foreach ($consultations as $consultation) {
-            $events[] = [
-                'title' => $consultation->patient->nom . ' ' . $consultation->patient->prenom,
-                'start' => $consultation->date_debut,
-                'end' => $consultation->date_fin,
-                'color' => $consultation->etatConsultation->couleur,
-            ];
-        }
+    foreach ($consultations as $consultation) {
+        $events[] = [
+            'title' => $consultation->patients->nom . ' ' . $consultation->patients->prenom,
+            'start' => $consultation->date_debut,
+            'end' => $consultation->date_fin,
+            'color' => $consultation->etatConsultations->couleur, // Couleur de l'état
+            'textColor' => '#000000', // Couleur du texte (noir)
+            'extendedProps' => [
+                'type' => $consultation->typeConsultations->type_consultation,
+                'etat' => $consultation->etatConsultations->etat,
+            ],
+        ];
+    }
 
-        return response()->json($events);
+    return response()->json($events);
     }
 
 }

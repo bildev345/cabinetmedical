@@ -14,8 +14,9 @@ return new class extends Migration
 
         Schema::create('analyses', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('date');
-            $table->foreignId('consultation_id');
+            $table->date('date');
+            $table->foreignId('consultation_id')->constrained();
+            $table->timestamps();
         });
 
     }
