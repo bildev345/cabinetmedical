@@ -29,7 +29,7 @@
                     <tr class="hover:bg-green-50 transition duration-200">
                         <td class="border border-green-300 px-4 py-2">{{ $medicament->medicament }}</td>
                         <td class="border border-green-300 px-4 py-2">
-                        <a href="{{ route('medicaments.edit', $medicament->id) }}" class="text-yellow-600 hover:text-yellow-700 mr-2 px-2">Edit</a>
+                        <a href="{{ route('medicaments.edit', $medicament) }}" class="text-yellow-600 hover:text-yellow-700 mr-2 px-2">Edit</a>
 
                             {{-- <form action="{{ route('medicaments.destroy', $medicaments) }}" method="POST" class="inline-block">
                                 @csrf
