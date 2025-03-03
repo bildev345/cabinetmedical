@@ -2,6 +2,10 @@
 
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\EtatConsultationController;
+use App\Http\Controllers\TypeConsultationController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\TypeDocumentController;
@@ -11,16 +15,7 @@ use App\Http\Controllers\MedicamentController;
 
 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+
 
 
 
@@ -33,6 +28,25 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', function () {
     return view('elements.home');
 });
+
+// Routes pour les consultations
+Route::resource('consultations', ConsultationController::class);
+
+// Routes pour etat consultations
+Route::resource('etat-consultations', EtatConsultationController::class);
+
+// Routes pour type consultations
+Route::resource('type-consultations', TypeConsultationController::class);
+
+// Route pour afficher le calendrier
+
+// Route::resource('consultations/calendar', ConsultationController::class);
+
+// Route::resource('consultations/events', ConsultationController::class);
+Route::get('/consultations/calendar', [ConsultationController::class, 'calendar'])->name('consultations.calendar');
+
+// Route pour récupérer les événements du calendrier (FullCalendar)
+Route::get('/consultations/events', [ConsultationController::class, 'getEvents'])->name('consultations.events');
 
 // Cette route retourne la vue 'news'
 Route::get('/news', function () {

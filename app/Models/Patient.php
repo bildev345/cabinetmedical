@@ -7,9 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    use HasFactory;
-
-    
     protected $fillable = [
         'nom',
         'prenom',
@@ -25,7 +22,10 @@ class Patient extends Model
         'assure'
     ];
 
-    
+    public function consultations()
+    {
+        return $this->hasMany(Consultation::class);
+    }
     public function constants()
     {
         return $this->belongsToMany(Constant::class, 'constants') 
