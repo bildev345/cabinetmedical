@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('prescriptions', function (Blueprint $table) {
-            $table->id();
-            $table->date('date');
-            $table->text('rapport');
-            $table->foreignId('consultation_id')->constrained()->cascadeOnDelete();
-            $table->timestamps();
+        Schema::table('prescriptions', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -25,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prescriptions');
+        Schema::table('prescriptions', function (Blueprint $table) {
+            //
+        });
     }
 };
