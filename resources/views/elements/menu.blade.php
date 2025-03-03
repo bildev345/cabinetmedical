@@ -25,7 +25,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('/') }}">Accueil</a><br>
                             <a class="dropdown-item" href="{{ url('/about-us') }}">À Propos</a>
-                            <a class="dropdown-item" href="{{ url('/services') }}">Services</a>
+                            <a class="dropdown-item" href="{{ route('prescriptions.index') }}">Préscription</a>
                             <a class="dropdown-item" href="{{ url('/blog') }}">Actualités</a>
                             <a class="dropdown-item" href="{{ route('documents.index') }}">Documents</a>
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
