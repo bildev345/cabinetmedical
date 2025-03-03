@@ -95,7 +95,7 @@ class PrescriptionController extends Controller
     public function update(Request $request, prescription $prescription)
     {
         $prescription->update($request->all());
-        return redirect()->route('prescriptions.index')->with('success','prescriptions updated');
+        return redirect()->route('prescriptions.index')->with('success',' modifier avec success cette prescriptions ');
     }
 
     /**
@@ -104,6 +104,6 @@ class PrescriptionController extends Controller
     public function destroy(prescription $prescription)
     {
         $prescription->delete();
-        return redirect()->route('prescriptions.index')->with('success','prescriptions deleted');
+        return redirect()->route('prescriptions.index')->with('success','supprimer avec success cette prescription');
     }
 }

@@ -1,6 +1,21 @@
 @extends('layouts.master')
-
 @section('main')
+<div class="container">
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+    @if (session('update'))
+    <div class="alert alert-primary">
+        {{ session('update') }}
+    </div>
+    @endif
+    @if (session('destroy'))
+    <div class="alert alert-danger">
+        {{ session('destroy') }}
+    </div>
+    @endif
 <div class="container mt-5">
     <h1 class="mb-4 text-center text-primary">Liste des Prescriptions</h1>
 
