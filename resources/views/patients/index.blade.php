@@ -4,10 +4,11 @@
 
 @section('main')
 <div class="container">
+    @if (session("success"))
+    <div class="alert alert-success">{{session("success")}}</div> 
+    @endif
     <h1 class="text-center my-4">Liste des Patients</h1>
-
     <a href="{{ route('patients.create') }}" class="btn btn-primary mb-3">Ajouter un Patient</a>
-
     <table class="table table-bordered">
         <thead>
             <tr>

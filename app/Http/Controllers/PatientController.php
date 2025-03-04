@@ -23,10 +23,7 @@ class PatientController extends Controller
 
     public function store(StorePatientRequest $request)
     {
-        dd($request->all()); 
-
         Patient::create($request->validated());
-
         return redirect()->route('patients.index')->with('success', 'Patient ajouté avec succès.');
     }
 
@@ -39,17 +36,7 @@ class PatientController extends Controller
     
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
-        
-        dd($request->all());
-
-        
-        DB::enableQueryLog();
-
-        $patient->update($request->validated());
-
-        
-        dd(DB::getQueryLog());
-
+        $patient->update($request->all());
         return redirect()->route('patients.index')->with('success', 'Patient mis à jour avec succès.');
     }
 
