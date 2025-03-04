@@ -16,6 +16,14 @@
         {{ session('destroy') }}
     </div>
     @endif
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        
+    @endif
 <div class="container mt-5">
     <h1 class="mb-4 text-center text-primary">Liste des Prescriptions</h1>
 

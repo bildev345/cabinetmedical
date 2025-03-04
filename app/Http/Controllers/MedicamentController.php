@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreMedicamentRequest;
+use App\Http\Requests\UpdateMedicamentRequest;
 use App\Models\medicament;
 use Illuminate\Http\Request;
 
@@ -26,15 +28,11 @@ class MedicamentController extends Controller
     return view('medicaments.create', compact('medicaments'));
     }
 
-
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreMedicamentRequest $request)
     {
-        $request->validate([
-            'medicament' => 'required|string|max:255'
-        ]);
         Medicament::create($request->all());
         return redirect()->route('medicaments.index')->with('success', 'Médicament ajouté avec succès.');
     }
@@ -60,7 +58,7 @@ class MedicamentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, medicament $medicament)
+    public function update(UpdateMedicamentRequest $request, medicament $medicament)
     {
         $medicament->update($request->all());
         return redirect()->route('medicaments.index')->with('success','Medicament updated');
