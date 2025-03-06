@@ -4,6 +4,12 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\TypeDocumentController;
+use App\Http\Controllers\ChirurgieController;
+
+use App\Http\Controllers\ConstantController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +55,18 @@ Route::resource('/documents', DocumentController::class);
 Route::resource('/type_documents', TypeDocumentController::class);
 Route::get('/documents/{document}/download', [DocumentController::class, 'download'])
     ->name('documents.download');
+
+
+    Route::resource('chirurgies', ChirurgieController::class)->parameters([
+        'chirurgies' => 'chirurgie'
+    ]);
+
+
+    // Route::resource('chirurgies', ChirurgieController::class);
+    // Route::get('/chirurgies/{chirurgie}/edit', [ChirurgieController::class, 'edit'])->name('chirurgies.edit');
+// Route::put('/chirurgies/{chirurgie}', [ChirurgieController::class, 'update'])->name('chirurgies.update');
+// Route::delete('chirurgies/{chirurgie}', [ChirurgieController::class, 'destroy'])->name('chirurgies.destroy');
+
+
+
+Route::resource('constants', ConstantController::class);
