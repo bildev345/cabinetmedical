@@ -29,6 +29,9 @@
                             <a class="dropdown-item" href="{{ url('/blog') }}">Actualités</a>
                             <a class="dropdown-item" href="{{ route('documents.index') }}">Documents</a>
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
+                            <a class="dropdown-item" href="{{ route('chirurgies.index') }}">chirurgies</a>
+                            <a class="dropdown-item" href="{{ route('constants.index') }}">constants</a>
+
                         </div>
                     </li>
                    <li><a href="{{ url('/news') }}" class="smoothScroll">Actualités</a></li>

@@ -2,7 +2,10 @@
 <html lang="en">
 <head>
 
-     <title>Health - Medical Website Template</title>
+
+
+     <title>Santé - Modèle de site Web médical</title>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!--
 
 Template 2098 Health

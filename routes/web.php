@@ -9,10 +9,10 @@ use App\Http\Controllers\TypeConsultationController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\TypeDocumentController;
+use App\Http\Controllers\ChirurgieController;
+use App\Http\Controllers\ConstantController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\MedicamentController;
-
-
 
 
 
@@ -58,12 +58,19 @@ Route::get('/contact', function () {
     return view('elements.contact');
 });
 
-
 Route::resource('patients', PatientController::class);
 Route::resource('/documents', DocumentController::class);
 Route::resource('/type_documents', TypeDocumentController::class);
 Route::get('/documents/{document}/download', [DocumentController::class, 'download'])
-->name('documents.download');
+    ->name('documents.download');
+Route::resource('chirurgies', ChirurgieController::class)->parameters([
+        'chirurgies' => 'chirurgie'
+]);
+    // Route::resource('chirurgies', ChirurgieController::class);
+    // Route::get('/chirurgies/{chirurgie}/edit', [ChirurgieController::class, 'edit'])->name('chirurgies.edit');
+// Route::put('/chirurgies/{chirurgie}', [ChirurgieController::class, 'update'])->name('chirurgies.update');
+// Route::delete('chirurgies/{chirurgie}', [ChirurgieController::class, 'destroy'])->name('chirurgies.destroy');
 
+Route::resource('constants', ConstantController::class);
 Route::resource('prescriptions', PrescriptionController::class);
 Route::resource('medicaments', MedicamentController::class);
