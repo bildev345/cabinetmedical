@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Document;
 use App\Models\TypeDocument;
 use App\Models\Patient;
-use DateTime;
 use Illuminate\Support\Facades\Storage;
 
 class DocumentController extends Controller
@@ -64,28 +63,28 @@ class DocumentController extends Controller
     }
 
     public function store(Request $request)
-    {
-        $validated = $request->validate([
-            'date' => 'required|date',
-            'rapport' => 'required',
-            'fichier' => 'required|file|max:2048',
-            'type_document_id' => 'required|exists:type_documents,id',
-            'patient_id' => 'required|exists:patients,id',
-        ]);
+{
+    $validated = $request->validate([
+        'date' => 'required|date',
+        'rapport' => 'required',
+        'fichier' => 'required|file|max:2048',
+        'type_document_id' => 'required|exists:type_documents,id',
+        'patient_id' => 'required|exists:patients,id',
+    ]);
 
-        if ($request->hasFile('fichier')) {
-            $file = $request->file('fichier');
-            $filename = time() . '_' . $file->getClientOriginalName(); 
-            $path = $file->storeAs('documents/' . $request->patient_id, $filename, 'local');
+    if ($request->hasFile('fichier')) {
+        $file = $request->file('fichier');
+        $filename = time() . '_' . $file->getClientOriginalName(); 
+        $path = $file->storeAs('documents/' . $request->patient_id, $filename, 'local');
         
-            Document::create([
-                'date' => $validated['date'],
-                'rapport' => $validated['rapport'],
-                'fichier' => $path,
-                'type_document_id' => $validated['type_document_id'],
-                'patient_id' => $validated['patient_id']
-            ]);
-        }
+        Document::create([
+            'date' => $validated['date'],
+            'rapport' => $validated['rapport'],
+            'fichier' => $path,
+            'type_document_id' => $validated['type_document_id'],
+            'patient_id' => $validated['patient_id']
+        ]);
+    }
 
     return redirect()->route('documents.index')->with('success', 'Document uploaded successfully');
 }

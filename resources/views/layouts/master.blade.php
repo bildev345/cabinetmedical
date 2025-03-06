@@ -3,9 +3,9 @@
 <head>
 
 
+
      <title>Santé - Modèle de site Web médical</title>
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <!--
 
 Template 2098 Health
@@ -27,6 +27,7 @@ http://www.tooplate.com/view/2098-health
      <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
      <link rel="stylesheet" href="{{ asset('css/owl.carousel.css') }}">
      <link rel="stylesheet" href="{{ asset('css/owl.theme.default.min.css') }}">
+
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="{{ asset('css/tooplate-style.css') }}">
 

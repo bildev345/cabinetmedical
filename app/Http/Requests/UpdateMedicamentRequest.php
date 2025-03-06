@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthControllerRequest extends FormRequest
+class UpdateMedicamentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,17 +22,15 @@ class AuthControllerRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'email' => 'required|email|exists:users',
-                'password' => 'required', 
+            'medicament' => 'required|string|max:255'
         ];
     }
-    public function messages() : array
+    public function messages(): array
     {
         return [
-            'email.required' => 'email est obligatoire',
-            'email.email' => 'email est invalide',
-            'email.exists' => 'vous n\'etes pas un membre',
-            'password.required' => 'mot de passe est obligatoire',
+            'medicament.required' => 'le champ médicament est obligatoire',
+            'medicament.string' => 'le nom de médicament doit etre une chaine',
+            'medicament.max' => 'le nom de médicament ne doit pas dépasser 255 charactères'
         ];
     }
 }
