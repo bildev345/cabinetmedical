@@ -59,5 +59,7 @@ http://www.tooplate.com/view/2098-health
     <script src="{{ asset('js/smoothscroll.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('js/custom.js') }}"></script>
+    <script src=" https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js "></script>
+    
 </body>
 </html>

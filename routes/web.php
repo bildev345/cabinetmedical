@@ -42,13 +42,12 @@ Route::resource('type-consultations', TypeConsultationController::class);
 
 // Route pour afficher le calendrier
 
-// Route::resource('consultations/calendar', ConsultationController::class);
 
-// Route::resource('consultations/events', ConsultationController::class);
-Route::get('/consultations/calendar', [ConsultationController::class, 'calendar'])->name('consultations.calendar');
+// Route::get('/consultations/calendar', 
+Route::get('calendar', [ConsultationController::class, 'calendar'])->name('calendar');
 
-// Route pour récupérer les événements du calendrier (FullCalendar)
-Route::get('/consultations/events', [ConsultationController::class, 'getEvents'])->name('consultations.events');
+// Route pour récupérer les événements du calendrier 
+Route::get('events',[ConsultationController::class, 'getEvents'])->name('events');
 
 // Cette route retourne la vue 'news'
 Route::get('/news', function () {

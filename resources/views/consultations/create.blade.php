@@ -4,13 +4,15 @@
     <h1>Créer une Consultation</h1>
     <form action="{{ route('consultations.store') }}" method="POST">
         @csrf
-        <div class="form-group">
+        <div class="form-row">
+        <div class="form-group col-md-4">
             <label for="date_debut">Date de Début</label>
-            <input type="datetime-local" name="date_debut" id="date_debut" class="form-control">
+            <input type="datetime-local" name="date_debut" id="date_debut" class="form-control" value="{{ request('start') }}">
         </div>
-        <div class="form-group">
+        <div class="form-group col-md-4"">
             <label for="date_fin">Date de Fin</label>
-            <input type="datetime-local" name="date_fin" id="date_fin" class="form-control" >
+            <input type="datetime-local" name="date_fin" id="date_fin" class="form-control" value="{{ request('end') }}">
+        </div>
         </div>
         <div class="form-group">
             <label for="etat_consultation_id">État de la Consultation</label>

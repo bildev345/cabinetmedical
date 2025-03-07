@@ -98,7 +98,8 @@ class ConsultationController extends Controller
         $consultation = Consultation::findOrFail($id);
         $consultation->update($request->all());
 
-
+        // return response()->json(['message' => 'Consultation mise à jour avec succès.']);
+        
         return redirect()->route('consultations.index')->with('success', 'Consultation mise à jour avec succès.');
     }
 
@@ -112,35 +113,33 @@ class ConsultationController extends Controller
         return redirect()->route('consultations.index')->with('success', 'Consultation supprimée avec succès.');
     }
 
-    // Affiche le calendrier
     public function calendar()
     {
-        return view('consultations.calendar');
+        return view('calendar');
     }
-
-    // Récupère les événements pour FullCalendar
 
     public function getEvents()
     {
-    $consultations = Consultation::with(['patients', 'etatConsultations', 'typeConsultations'])->get();
+        // $consultations = Consultation::with(['patients', 'etatConsultations', 'typeConsultations'])->get();
+        $consultations = Consultation::all();
+        $events = [];
 
-    $events = [];
+        foreach ($consultations as $consultation) {
+            $events[] = [
+                'id' => $consultation->id, 
+                'title' => $consultation->patient->nom . ' ' . $consultation->patient->prenom,
+                'start' => $consultation->date_debut,
+                'end' => $consultation->date_fin,
+                'color' => $consultation->etatConsultation->couleur, // Couleur de l'état
+                'textColor' => '#000000', // Couleur du texte (noir)
+                'extendedProps' => [
+                    'type' => $consultation->typeConsultation->type_consultation,
+                    'etat' => $consultation->etatConsultation->etat,
+                ],
+            ];
+        }
 
-    foreach ($consultations as $consultation) {
-        $events[] = [
-            'title' => $consultation->patients->nom . ' ' . $consultation->patients->prenom,
-            'start' => $consultation->date_debut,
-            'end' => $consultation->date_fin,
-            'color' => $consultation->etatConsultations->couleur, // Couleur de l'état
-            'textColor' => '#000000', // Couleur du texte (noir)
-            'extendedProps' => [
-                'type' => $consultation->typeConsultations->type_consultation,
-                'etat' => $consultation->etatConsultations->etat,
-            ],
-        ];
-    }
-
-    return response()->json($events);
+        return response()->json($events);
     }
 
 }

@@ -4,8 +4,9 @@
     <div>
     <h1>Liste des Consultations</h1>
     <a href="{{ route('consultations.create') }}" class="btn btn-primary mb-3">Créer une Consultation</a>
+
+    <a href="{{ route('calendar') }}" class="btn btn-primary mb-3">Calnedrier Des Consultation</a>
     
-    <a href="{{ route('consultations.calendar') }}" class="btn btn-success mb-3">Voir le Calendrier</a>
 
     <a href="{{ route('etat-consultations.index') }}" class="btn btn-success mb-3">Etat Consultations</a>
 
