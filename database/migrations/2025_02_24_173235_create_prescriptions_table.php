@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->date('date');
             $table->text('rapport');
-            $table->foreignId('consultation_id')->constrained();
+            $table->foreignId('consultation_id')->constrained()->cascadeOnDelete();
+            $table->timestamps();
         });
     }
 

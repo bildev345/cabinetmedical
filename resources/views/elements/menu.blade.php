@@ -25,11 +25,14 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="{{ url('/') }}">Accueil</a><br>
                             <a class="dropdown-item" href="{{ url('/about-us') }}">À Propos</a>
-                            <a class="dropdown-item" href="{{ url('/services') }}">Services</a>
+                            <a class="dropdown-item" href="{{ route('prescriptions.index') }}">Préscription</a>
                             <a class="dropdown-item" href="{{ url('/blog') }}">Actualités</a>
                             <a class="dropdown-item" href="{{ route('documents.index') }}">Documents</a>
                             <a class="dropdown-item" href="{{ url('/contact') }}">Contact</a>
                             <a class="dropdown-item" href="{{ route('analyses.index') }}">Analyses</a>
+                            <a class="dropdown-item" href="{{ route('chirurgies.index') }}">chirurgies</a>
+                            <a class="dropdown-item" href="{{ route('constants.index') }}">constants</a>
+
                         </div>
                     </li>
                    <li><a href="{{ url('/news') }}" class="smoothScroll">Actualités</a></li>
