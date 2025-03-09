@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prescription;
-use App\Models\consultation;
-use App\Models\medicament;
 use Illuminate\Support\Facades\DB;
+use App\Models\Consultation;
+use App\Models\Medicament;
+
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PrescriptionController extends Controller
 {
@@ -27,8 +29,9 @@ class PrescriptionController extends Controller
      */
     public function create()
     {
-        $consultations = consultation::all();
-        $medicaments = medicament::all();
+        $consultations = Consultation::all();
+        //$consultations = DB::table('consultations')->get();
+        $medicaments = Medicament::all();
         return view('prescriptions.create', compact('consultations', 'medicaments'));
     }
     
@@ -82,19 +85,23 @@ class PrescriptionController extends Controller
      * Display the specified resource.
      */
 
+
      public function show($id)
      {
          $prescription = Prescription::with('medicaments', 'consultation')->findOrFail($id);
          return view('prescriptions.show', compact('prescription'));
      }
      
+
+    
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(prescription $prescription)
+    public function edit(Prescription $prescription)
 {
     // Récupérer toutes les consultations
     $consultations = Consultation::all();  // Ou une condition selon le besoin
+    //$consultations = DB::table('consultations')->get();
     $medicaments = Medicament::all(); // Si nécessaire, récupérer les médicaments
 
     // Passer les données à la vue
@@ -106,7 +113,7 @@ class PrescriptionController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, prescription $prescription)
+    public function update(Request $request, Prescription $prescription)
     {
         $prescription->update($request->all());
         return redirect()->route('prescriptions.index')->with('success',' modifier avec success cette prescriptions ');
@@ -115,7 +122,7 @@ class PrescriptionController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(prescription $prescription)
+    public function destroy(Prescription $prescription)
     {
         $prescription->delete();
         return redirect()->route('prescriptions.index')->with('success','supprimer avec success cette prescription');
