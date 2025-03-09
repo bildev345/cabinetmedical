@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('msin')
+@section('main')
 <div class="container mt-4">
     @if($errors->any())
         <ul class="alert alert-danger">

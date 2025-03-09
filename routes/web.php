@@ -14,8 +14,9 @@ use App\Http\Controllers\ConstantController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\MedicamentController;
 use App\Http\Controllers\AnalyseController;
-use App\Http\Controllers\TypeAnalyseController;
 use App\Http\Controllers\ResultatAnalyseController;
+use App\Http\Controllers\TypeAnalyseController;
+
 
 
 
@@ -95,3 +96,5 @@ Route::resource('chirurgies', ChirurgieController::class)->parameters([
 Route::resource('constants', ConstantController::class);
 Route::resource('prescriptions', PrescriptionController::class);
 Route::resource('medicaments', MedicamentController::class);
+Route::get('/prescriptions/{id}', [PrescriptionController::class, 'show'])->name('prescriptions.show');
+
