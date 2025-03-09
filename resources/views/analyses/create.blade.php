@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('main')
 <div class="card-body">
     @if (session('success'))
         <div class="alert alert-success">
