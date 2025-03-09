@@ -43,7 +43,7 @@
                 <tr>
                     <th>Date</th>
                     <th>Rapport</th>
-                    <th>Consultation ID</th>
+                    <th>Consultation</th>
                     <th>Médicaments</th>
                     <th>Notes</th>
                     <th>Actions</th>
@@ -54,7 +54,7 @@
                     <tr>
                         <td>{{ $prescription->date }}</td>
                         <td>{{ $prescription->rapport }}</td>
-                        <td>{{ $prescription->consultation_id }}</td>
+                        <td>{{ $prescription->consultation->date_debut}}</td>
                         <td>
                             @foreach ($prescription->medicaments as $medicament)
                                 <div>{{ $medicament->medicament }}</div>
@@ -70,6 +70,9 @@
                             @endforeach
                         </td>
                         <td class="text-end">
+                        <a href="{{ route('prescriptions.show', $prescription->id) }}" class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i> 👁️
+                                </a>
                             <a href="{{ route('prescriptions.edit', $prescription->id) }}" class="btn btn-warning btn-sm">
                                 <i class="bi bi-pencil-square"></i> ✏️
                             </a>

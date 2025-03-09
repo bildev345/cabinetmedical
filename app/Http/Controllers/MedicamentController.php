@@ -13,11 +13,11 @@ class MedicamentController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $medicaments = Medicament::all();
-        return view('medicaments.index', compact('medicaments'));  
-    }
-    
+{
+    $medicaments = Medicament::all();
+    return view('medicaments.create', compact('medicaments'));
+}
+
     /**
      * Show the form for creating a new resource.
      */

@@ -96,3 +96,5 @@ Route::resource('chirurgies', ChirurgieController::class)->parameters([
 Route::resource('constants', ConstantController::class);
 Route::resource('prescriptions', PrescriptionController::class);
 Route::resource('medicaments', MedicamentController::class);
+Route::get('/prescriptions/{id}', [PrescriptionController::class, 'show'])->name('prescriptions.show');
+
