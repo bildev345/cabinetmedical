@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prescription;
 use App\Models\consultation;
 use App\Models\medicament;
-
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 
@@ -37,43 +37,57 @@ class PrescriptionController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $request->validate([
-            'date' => 'required|date',
-            'rapport' => 'required|string',
-            'consultation_id' => 'required|exists:consultations,id',
-            'medicaments' => 'required|array',
-            'medicaments.*' => 'exists:medicaments,id',
-            'note' => 'nullable|array',
-        ]);
-    
+{
+    $request->validate([
+        'date' => 'required|date',
+        'rapport' => 'required|string',
+        'consultation_id' => 'required|exists:consultations,id',
+        'medicament_id' => 'required|array|min:1', // Vérifie qu'au moins un médicament est sélectionné
+        'medicament_id.*' => 'exists:medicaments,id',
+        'notes' => 'nullable|array',
+        'notes.*' => 'nullable|string|max:255',
+    ]);
+
+    try {
+        // Démarrer une transaction
+        DB::beginTransaction();
+
         // Créer la prescription
         $prescription = Prescription::create([
             'date' => $request->date,
             'rapport' => $request->rapport,
             'consultation_id' => $request->consultation_id,
         ]);
-    
-        // Attacher les médicaments avec la note dans la table pivot
-        foreach ($request->medicaments as $index => $medicamentId) {
-            $note = isset($request->note[$index]) ? $request->note[$index] : null; // Récupérer la note correspondante ou null si vide
+
+        // Attacher les médicaments avec la note
+        foreach ($request->medicament_id as $medicamentId) {
+            $note = $request->notes[$medicamentId] ?? null; // Récupérer la note correspondante ou NULL
             $prescription->medicaments()->attach($medicamentId, ['note' => $note]);
         }
-    
+
+        // Valider la transaction
+        DB::commit();
+
         return redirect()->route('prescriptions.index')->with('success', 'Prescription ajoutée avec succès.');
+    } catch (\Exception $e) {
+        // Annuler la transaction en cas d'erreur
+        DB::rollBack();
+
+        return redirect()->route('prescriptions.index')->with('error', 'Une erreur est survenue lors de l\'ajout de la prescription.');
     }
-    
+}
 
 
     /**
      * Display the specified resource.
      */
 
-    public function show(prescription $prescription)
-    {
-        //
-    }
-
+     public function show($id)
+     {
+         $prescription = Prescription::with('medicaments', 'consultation')->findOrFail($id);
+         return view('prescriptions.show', compact('prescription'));
+     }
+     
     /**
      * Show the form for editing the specified resource.
      */

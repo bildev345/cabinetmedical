@@ -39,10 +39,11 @@ class Handler extends ExceptionHandler
     /**
      * Register the exception handling callbacks for the application.
      */
-    public function register(): void
-    {
-        $this->reportable(function (Throwable $e) {
-            //
-        });
-    }
+    public function register()
+{
+    $this->reportable(function (ModelNotFoundException $e) {
+        // You can log the exception here or display a custom message
+        return response()->view('errors.custom', [], 404);
+    });
+}
 }

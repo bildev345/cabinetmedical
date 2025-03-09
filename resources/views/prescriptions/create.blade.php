@@ -42,25 +42,30 @@
             </select>
         </div>
 
-        {{-- Sélection des médicaments (multiple) --}}
-        
+       {{-- Sélection des médicaments (multiple) --}}
         <div class="mb-4">
-    <label for="medicament_id" class="block mb-1 text-green-800">Médicaments:</label>
-    <select name="medicament_id[]" id="medicament_id" class="border border-green-300 p-2 w-full rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 @error('medicament_id') border-red-500 @enderror" multiple>
-        @foreach ($medicaments as $medicament)
-            <option value="{{ $medicament->id }}" {{ in_array($medicament->id, old('medicament_id', [])) ? 'selected' : '' }}>{{ $medicament->medicament }}</option>
-        @endforeach
-    </select>
-    @error('medicament_id')
-        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
-    @enderror
-    <button type="button" class="bg-green-700 text-white p-2 rounded-lg mt-2 hover:bg-green-800 transition duration-300" onclick="window.location.href='{{ route('medicaments.create') }}'">Ajouter un médicament</button>
-</div>
-            <!-- Champ Note pour chaque médicament -->
-             <div class="mb-3">
-    <label for="note">Note (optionnelle):</label>
-    <input type="text" name="note[]" placeholder="Entrez une note" class="form-control">
-</div>
+            <label for="medicament_id" class="block mb-1 text-green-800">Médicaments:</label>
+            <select name="medicament_id[]" id="medicament_id" class="border border-green-300 p-2 w-full rounded-lg focus:ring-2 focus:ring-green-500 focus:border-green-500 @error('medicament_id') border-red-500 @enderror" multiple>
+                @foreach ($medicaments as $medicament)
+                    <option value="{{ $medicament->id }}" {{ in_array($medicament->id, old('medicament_id', [])) ? 'selected' : '' }}>{{ $medicament->medicament }}</option>
+                @endforeach
+            </select>
+            @error('medicament_id')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+            @enderror
+            <button type="button" class="bg-green-700 text-white p-2 rounded-lg mt-2 hover:bg-green-800 transition duration-300" onclick="window.location.href=`{{ route('medicaments.create') }}`">Ajouter un médicament</button>
+        </div>
+
+        {{-- Ajouter un champ de note pour chaque médicament sélectionné (ici, manuellement) --}}
+        <div class="mb-3">
+            <label for="note_1" class="form-label">Note pour le médicament 1:</label>
+            <input type="text" name="notes[1]" class="form-control" placeholder="Entrez une note" value="{{ old('notes.1') }}">
+        </div>
+        
+        <div class="mb-3">
+            <label for="note_2" class="form-label">Note pour le médicament 2:</label>
+            <input type="text" name="notes[2]" class="form-control" placeholder="Entrez une note" value="{{ old('notes.2') }}">
+        </div>
 
         {{-- Bouton d'enregistrement --}}
         <button type="submit" class="btn btn-primary">Enregistrer</button>

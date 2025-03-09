@@ -16,6 +16,14 @@
         {{ session('destroy') }}
     </div>
     @endif
+    @if ($errors->any())
+        <ul class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <li>{{$error}}</li>
+            @endforeach
+        </ul>
+        
+    @endif
 <div class="container mt-5">
     <h1 class="mb-4 text-center text-primary">Liste des Prescriptions</h1>
 
@@ -35,7 +43,7 @@
                 <tr>
                     <th>Date</th>
                     <th>Rapport</th>
-                    <th>Consultation ID</th>
+                    <th>Consultation</th>
                     <th>Médicaments</th>
                     <th>Notes</th>
                     <th>Actions</th>
@@ -46,7 +54,7 @@
                     <tr>
                         <td>{{ $prescription->date }}</td>
                         <td>{{ $prescription->rapport }}</td>
-                        <td>{{ $prescription->consultation_id }}</td>
+                        <td>{{ $prescription->consultation->date_debut}}</td>
                         <td>
                             @foreach ($prescription->medicaments as $medicament)
                                 <div>{{ $medicament->medicament }}</div>
@@ -62,6 +70,9 @@
                             @endforeach
                         </td>
                         <td class="text-end">
+                        <a href="{{ route('prescriptions.show', $prescription->id) }}" class="btn btn-info btn-sm">
+                                    <i class="bi bi-eye"></i> 👁️
+                                </a>
                             <a href="{{ route('prescriptions.edit', $prescription->id) }}" class="btn btn-warning btn-sm">
                                 <i class="bi bi-pencil-square"></i> ✏️
                             </a>
