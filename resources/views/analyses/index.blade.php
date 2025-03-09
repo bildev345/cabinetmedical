@@ -10,7 +10,7 @@
     
             <a href="{{ route('type_analyses.index') }}" class="btn btn-success mb-3">Type Analyse</a>
 
-            <a href="{{ route('resultat_analyses.index') }}" class="btn btn-success mb-3">Resultat Analyse</a>
+            <a href="{{ route('resultats_analyses.index') }}" class="btn btn-success mb-3">Resultat Analyse</a>
 
             {{ session('success') }}
             </div>
