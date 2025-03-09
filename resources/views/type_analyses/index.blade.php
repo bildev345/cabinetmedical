@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('main')
 
 <div class="container mt-4">
     <h2 class="text-center mb-4"> Liste des types d'analyses</h2>
