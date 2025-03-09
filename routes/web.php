@@ -13,6 +13,9 @@ use App\Http\Controllers\ChirurgieController;
 use App\Http\Controllers\ConstantController;
 use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\MedicamentController;
+use App\Http\Controllers\AnalyseController;
+use App\Http\Controllers\TypeAnalyseController;
+use App\Http\Controllers\ResultatAnalyseController;
 
 
 

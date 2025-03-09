@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.master')
 
-@section('content')
+@section('main')
 <div class="container">
     <h2>🔬 Détails de l'analyse</h2>
     <table class="table table-bordered">
