@@ -8,6 +8,7 @@ use App\Models\medicament;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PrescriptionController extends Controller
 {
@@ -28,6 +29,7 @@ class PrescriptionController extends Controller
     public function create()
     {
         $consultations = consultation::all();
+        //$consultations = DB::table('consultations')->get();
         $medicaments = medicament::all();
         return view('prescriptions.create', compact('consultations', 'medicaments'));
     }
@@ -81,6 +83,7 @@ class PrescriptionController extends Controller
 {
     // Récupérer toutes les consultations
     $consultations = Consultation::all();  // Ou une condition selon le besoin
+    //$consultations = DB::table('consultations')->get();
     $medicaments = Medicament::all(); // Si nécessaire, récupérer les médicaments
 
     // Passer les données à la vue
