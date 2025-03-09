@@ -6,10 +6,7 @@ use App\Models\Prescription;
 use Illuminate\Support\Facades\DB;
 use App\Models\Consultation;
 use App\Models\Medicament;
-
-
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PrescriptionController extends Controller
 {
