@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class medicament extends Model
+class Medicament extends Model
 {
     use HasFactory;
     
     protected $guarded=['id'];
 
     public function prescriptions(){
-        return $this->belongsToMany(prescription::class)->withPivot('note')
+        return $this->belongsToMany(Prescription::class)->withPivot('note')
         ->withTimestamps();
     }
 }
