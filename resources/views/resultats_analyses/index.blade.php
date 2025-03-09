@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('msin')
+@section('main')
 <div class="container mt-4">
     @if($errors->any())
         <ul class="alert alert-danger">
@@ -15,8 +15,7 @@
     <h2 class="text-center mb-4">Liste des résultats d'analyses</h2>
     <div class="d-flex justify-content-end mb-3">
         <a href="{{ route('resultats_analyses.create') }}" class="btn btn-primary">Ajouter un nouveau résultat</a>
-    
-        <a href="{{ route('resultat_analyses.index') }}" class="btn btn-primary mb-3">Resultat Analyse</a>
+        <a href="{{ route('resultats_analyses.index') }}" class="btn btn-primary mb-3">Resultat Analyse</a>
     </div>
 
     <table class="table table-striped table-hover">

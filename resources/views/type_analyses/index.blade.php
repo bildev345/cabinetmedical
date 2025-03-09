@@ -6,7 +6,7 @@
     <h2 class="text-center mb-4"> Liste des types d'analyses</h2>
     @if (session('success'))
             <div class="alert alert-success">
-            <a href="{{ route('type-analyses.create') }}" class="btn btn-primary mb-3">Créer un Type</a>
+            <a href="{{ route('type_analyses.create') }}" class="btn btn-primary mb-3">Créer un Type</a>
 
             <a href="{{ route('analyses.index') }}" class="btn btn-primary mb-3">Type Analyse</a>
 
