@@ -1,8 +1,14 @@
 @extends('layouts.master')
-
 @section('main')
+
     <div class="container">
-    @if (session('success'))
+        <h2 class="text-center fs-4">Liste des constantes des patients</h2>
+        <a href="{{ route('constant_patient.create') }}" class="btn btn-primary">Ajouter une constante</a>
+
+        <!-- @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif -->
+        @if (session('success'))
                 <script>
                     Swal.fire({
                     title: "Success!",
@@ -11,26 +17,31 @@
                     confirmButtonText: "OK"
                     });
                 </script>
-    @endif
-        <h2 class="text-center fs-4">Liste des Constants </h2>
-        <a href="{{ route('constants.create') }}" class="btn btn-primary">Ajouter Constant</a>
-        <table class="table mt-3">
+            @endif
+
+        <table class="table">
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Constant</th>
+                    <th>Patient</th>
+                    <th>Constante</th>
+                    <th>Date</th>
+                    <th>Valeur</th>
                     <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($constants as $constant)
+                @foreach($constantsPatients as $constant)
                     <tr>
                         <td>{{ $constant->id }}</td>
-                        <td>{{ $constant->constant }}</td>
+                        <td>{{ $constant->patient->nom }}</td>
+                        <td>{{ $constant->constant->constant }}</td>
+                        <td>{{ $constant->date }}</td>
+                        <td>{{ $constant->valeur }}</td>
                         <td>
-                            <a href="{{ route('constants.edit', $constant->id) }}" class="btn btn-warning btn-sm">Modifier</a>
+                            <a href="{{ route('constant_patient.edit', $constant->id) }}" class="btn btn-warning">Modifier</a>
                             <button class="btn btn-danger btn-sm" onclick="confirmDelete({{ $constant->id }})">Supprimer</button>
-                            <form id="delete-form-{{ $constant->id }}" action="{{ route('constants.destroy', $constant->id) }}" method="POST" style="display: none;">
+                            <form id="delete-form-{{ $constant->id }}" action="{{ route('constant_patient.destroy', $constant->id) }}" method="POST" style="display: none;">
                                 @csrf
                                 @method('DELETE')
                             </form>
@@ -39,9 +50,6 @@
                 @endforeach
             </tbody>
         </table>
-        <div>
-        <a href="{{ route('constant_patient.create') }}" class="btn btn-primary"><-Retour</a>
-        </div>
     </div>
     <script>
         function confirmDelete(constantId) {
@@ -60,4 +68,5 @@
             });
         }
     </script>
-@endsection
+@endsection 
+

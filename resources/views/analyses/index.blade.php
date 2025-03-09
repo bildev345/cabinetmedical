@@ -6,6 +6,12 @@
     <h2 class="text-center mb-4">Liste des analyses</h2>
     @if (session('success'))
             <div class="alert alert-success">
+            <a href="{{ route('analyses.create') }}" class="btn btn-primary mb-3">ajouter une Consultation</a>
+    
+            <a href="{{ route('type_analyses.index') }}" class="btn btn-success mb-3">Type Analyse</a>
+
+            <a href="{{ route('resultat_analyses.index') }}" class="btn btn-success mb-3">Resultat Analyse</a>
+
             {{ session('success') }}
             </div>
     @endif
