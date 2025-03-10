@@ -43,15 +43,13 @@ Route::resource('etat-consultations', EtatConsultationController::class);
 // Routes pour type consultations
 Route::resource('type-consultations', TypeConsultationController::class);
 
-// Route pour afficher le calendrier
+// Calendrier
+Route::get('calendar', [ConsultationController::class, 'calendar'])->name('calendar');
 
-// Route::resource('consultations/calendar', ConsultationController::class);
+// API pour les événements
+Route::get('list', [ConsultationController::class, 'list'])->name('list');
 
-// Route::resource('consultations/events', ConsultationController::class);
-Route::get('/consultations/calendar', [ConsultationController::class, 'calendar'])->name('consultations.calendar');
 
-// Route pour récupérer les événements du calendrier (FullCalendar)
-Route::get('/consultations/events', [ConsultationController::class, 'getEvents'])->name('consultations.events');
 
 // Cette route retourne la vue 'news'
 Route::get('/news', function () {
@@ -66,6 +64,7 @@ Route::get('/contact', function () {
 Route::resource('patients', PatientController::class);
 Route::resource('/documents', DocumentController::class);
 Route::resource('/type_documents', TypeDocumentController::class);
+
 Route::get('/documents/{document}/download', [DocumentController::class, 'download'])
     ->name('documents.download');
 

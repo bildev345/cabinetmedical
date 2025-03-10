@@ -37,7 +37,7 @@
                     </li>
                    <li><a href="{{ url('/news') }}" class="smoothScroll">Actualités</a></li>
                    <li><a href="#google-map" class="smoothScroll">Contact</a></li>
-                   <li class="appointment-btn"><a href="{{ url('/contact') }}">Prendre un rendez-vous</a></li>
+                   <li class="appointment-btn"><a href="{{ route('consultations.index') }}">Prendre un rendez-vous</a></li>
               </ul>
          </div>
 

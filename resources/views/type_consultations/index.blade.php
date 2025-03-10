@@ -23,13 +23,13 @@
                 <tr>
                     <td>{{ $type->id }}</td>
                     <td>{{ $type->type_consultation }}</td>
-                    <td style="background-color: {{ $type->couleur }};">{{ $type->couleur }}</td>
+                    <td style="background-color: {{ $type->couleur }};"></td>
                     <td>
-                        <a href="{{ route('type-consultations.edit', $type->id) }}" class="btn btn-warning">Modifier</a>
-                        <form action="{{ route('type-consultations.destroy', $type->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('type-consultations.edit', $type->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                        <form action="{{ route('type-consultations.destroy', $type->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer ce type ?');" style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>
