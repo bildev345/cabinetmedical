@@ -13,7 +13,7 @@ class Constant extends Model
 
     public function patients()
     {
-        return $this->belongsToMany(Patient::class, 'constants_patients')
+        return $this->belongsToMany(Patient::class)
                     ->withPivot('date', 'valeur')
                     ->withTimestamps();
     }

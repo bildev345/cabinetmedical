@@ -15,7 +15,7 @@ class Patient extends Model
     }
     public function constants()
 {
-    return $this->belongsToMany(Constant::class, 'constant_patient')
+    return $this->belongsToMany(Constant::class)
         ->withPivot('date', 'valeur')
         ->withTimestamps();
 }
