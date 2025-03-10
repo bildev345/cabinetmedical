@@ -14,9 +14,10 @@ class Patient extends Model
         return $this->hasMany(Consultation::class);
     }
     public function constants()
-    {
-        return $this->belongsToMany(Constant::class, 'constants') 
-            ->withPivot('date', 'valeur') 
-            ->withTimestamps(); 
-    }
+{
+    return $this->belongsToMany(Constant::class, 'constant_patient')
+        ->withPivot('date', 'valeur')
+        ->withTimestamps();
+}
+
 }

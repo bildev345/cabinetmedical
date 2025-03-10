@@ -39,11 +39,10 @@ class PatientController extends Controller
         $patient->update($request->all());
         return redirect()->route('patients.index')->with('success', 'Patient mis à jour avec succès.');
     }
-    public function show($id)
-{
-    $patient = Patient::with('constants')->findOrFail($id);
-    return view('patients.show', compact('patient'));
-}
+    public function show(Patient $patient)
+    {
+        return view('patients.show', compact('patient'));
+    }
 
 
 

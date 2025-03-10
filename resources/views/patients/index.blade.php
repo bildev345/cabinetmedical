@@ -53,7 +53,7 @@
                     <td>
                         <a href="{{ route('patients.edit', $patient->id) }}" class="btn btn-warning btn-sm">Modifier</a>
 <!-- In your patients.index.blade.php view -->
-<a href="{{ route('patients.show', $patient->id) }}" class="btn btn-info btn-sm">Voir Détails</a>
+<a href="{{ route('patients.show', $patient) }}" class="btn btn-info btn-sm">Voir Détails</a>
                         <button class="btn btn-danger btn-sm" onclick="confirmDelete({{ $patient->id }})">Supprimer</button>
                         <form id="delete-form-{{ $patient->id }}" action="{{ route('patients.destroy', $patient->id) }}" method="POST" style="display: none;">
                                 @csrf

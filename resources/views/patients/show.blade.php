@@ -30,7 +30,7 @@
                     <tbody>
                         @foreach ($patient->constants as $constant)
                         <tr>
-                            <td>{{ $constant->nom }}</td>
+                            <td>{{ $constant->constant }}</td>
                             <td>{{ $constant->pivot->date }}</td>
                             <td>{{ $constant->pivot->valeur }}</td>
                         </tr>
