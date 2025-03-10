@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->string('type_document');
             $table->timestamps();
-
         });
     }
 

@@ -22,13 +22,13 @@
                 <tr>
                     <td>{{ $etat->id }}</td>
                     <td>{{ $etat->etat }}</td>
-                    <td style="background-color: {{ $etat->couleur }};">{{ $etat->couleur }}</td>
+                    <td style="background-color: {{ $etat->couleur }};"></td>
                     <td>
-                        <a href="{{ route('etat-consultations.edit', $etat->id) }}" class="btn btn-warning">Modifier</a>
-                        <form action="{{ route('etat-consultations.destroy', $etat->id) }}" method="POST" style="display:inline;">
+                        <a href="{{ route('etat-consultations.edit', $etat->id) }}" class="btn btn-warning"><i class="fa fa-edit"></i></a>
+                        <form action="{{ route('etat-consultations.destroy', $etat->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette etat ?');"style="display:inline;">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
                         </form>
                     </td>
                 </tr>

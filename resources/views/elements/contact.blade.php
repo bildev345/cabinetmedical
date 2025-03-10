@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('main')
+@section('mainx')
 
      <!-- PRENDRE UN RENDEZ-VOUS -->
      <section id="appointment" data-stellar-background-ratio="3">
@@ -72,5 +72,6 @@
   -->
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.520986052066!2d-4.960026724862404!3d34.00483562023298!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd9f8c60c1efe303%3A0x33ffaa02926ac298!2sIFMOTICA%20F%C3%A8s%20OFPPT!5e0!3m2!1sfr!2sma!4v1740596645317!5m2!1sfr!2sma" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="98%" height="350" frameborder="0" style="border:0;margin:10px" allowfullscreen></iframe>
    </section>
+
 
 @endsection

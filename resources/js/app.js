@@ -1,3 +1,2 @@
 import './bootstrap';
-import axios from 'axios';
-window.axios = axios; // Rendre Axios disponible globalement
+import 'bootstrap/dist/js/bootstrap.bundle';

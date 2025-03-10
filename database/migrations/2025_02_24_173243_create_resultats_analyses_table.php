@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('type_analyse_id')->constrained();
             $table->text('resultat');
             $table->timestamps();
-
         });
     }
 
