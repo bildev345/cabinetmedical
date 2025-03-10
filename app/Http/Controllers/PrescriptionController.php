@@ -18,8 +18,6 @@ class PrescriptionController extends Controller
         $prescriptions = Prescription::with('medicaments')->get();
         return view('prescriptions.index', compact('prescriptions'));
     }
-    
-
 
     /**
      * Show the form for creating a new resource.
@@ -32,49 +30,48 @@ class PrescriptionController extends Controller
         return view('prescriptions.create', compact('consultations', 'medicaments'));
     }
     
-
     /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    $request->validate([
-        'date' => 'required|date',
-        'rapport' => 'required|string',
-        'consultation_id' => 'required|exists:consultations,id',
-        'medicament_id' => 'required|array|min:1', // Vérifie qu'au moins un médicament est sélectionné
-        'medicament_id.*' => 'exists:medicaments,id',
-        'notes' => 'nullable|array',
-        'notes.*' => 'nullable|string|max:255',
-    ]);
-
-    try {
-        // Démarrer une transaction
-        DB::beginTransaction();
-
-        // Créer la prescription
-        $prescription = Prescription::create([
-            'date' => $request->date,
-            'rapport' => $request->rapport,
-            'consultation_id' => $request->consultation_id,
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'rapport' => 'required|string',
+            'consultation_id' => 'required|exists:consultations,id',
+            'medicament_id' => 'required|array|min:1', // Vérifie qu'au moins un médicament est sélectionné
+            'medicament_id.*' => 'exists:medicaments,id',
+            'notes' => 'nullable|array',
+            'notes.*' => 'nullable|string|max:255',
         ]);
 
-        // Attacher les médicaments avec la note
-        foreach ($request->medicament_id as $medicamentId) {
-            $note = $request->notes[$medicamentId] ?? null; // Récupérer la note correspondante ou NULL
-            $prescription->medicaments()->attach($medicamentId, ['note' => $note]);
+        try {
+        // Démarrer une transaction
+            DB::beginTransaction();
+
+            // Créer la prescription
+            $prescription = Prescription::create([
+                'date' => $request->date,
+                'rapport' => $request->rapport,
+                'consultation_id' => $request->consultation_id,
+            ]);
+
+            // Attacher les médicaments avec la note
+            foreach ($request->medicament_id as $medicamentId) {
+                $note = $request->notes[$medicamentId] ?? null; // Récupérer la note correspondante ou NULL
+                $prescription->medicaments()->attach($medicamentId, ['note' => $note]);
         }
 
         // Valider la transaction
         DB::commit();
 
         return redirect()->route('prescriptions.index')->with('success', 'Prescription ajoutée avec succès.');
-    } catch (\Exception $e) {
+        } catch (\Exception $e) {
         // Annuler la transaction en cas d'erreur
-        DB::rollBack();
+            DB::rollBack();
 
-        return redirect()->route('prescriptions.index')->with('error', 'Une erreur est survenue lors de l\'ajout de la prescription.');
-    }
+            return redirect()->route('prescriptions.index')->with('error', 'Une erreur est survenue lors de l\'ajout de la prescription.');
+        }
 }
 
 

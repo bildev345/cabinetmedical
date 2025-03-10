@@ -62,6 +62,7 @@ Route::get('/contact', function () {
 });
 
 Route::resource('patients', PatientController::class);
+Route::get('patients/{id}', [PatientController::class, 'show'])->name('patients.show');
 Route::resource('/documents', DocumentController::class);
 Route::resource('/type_documents', TypeDocumentController::class);
 
