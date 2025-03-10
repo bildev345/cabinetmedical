@@ -5,10 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Consultation extends Model
+class consultation extends Model
 {
-    protected $fillable = ['date_debut', 'date_fin', 'etat_consultation_id', 'patient_id', 'type_consultation_id', 'rapport', 'gratuit'];
-
+    use HasFactory;
+    protected $guarded=['id'];
     public function patient()
     {
         return $this->belongsTo(Patient::class);
@@ -21,7 +21,6 @@ class Consultation extends Model
 
     public function typeConsultation()
     {
-        return $this->belongsTo(TypeConsultation::class);
+        return $this->belongsTo(typeConsultation::class);
     }
 }
-

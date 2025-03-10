@@ -2,7 +2,8 @@
 
 @section('main')
     <div class="container">
-        <h1>Ajouter Constant</h1>
+ 
+        <h2 class="text-center fs-4">Ajouter Constant</h2>
         <form action="{{ route('constants.store') }}" method="POST">
             @csrf
             <div class="mb-3">
@@ -11,6 +12,7 @@
             </div>
             <button type="submit" class="btn btn-success">Ajouter</button>
             <a href="{{ route('constants.index') }}" class="btn btn-secondary">Annuler</a>
+           
         </form>
     </div>
 @endsection

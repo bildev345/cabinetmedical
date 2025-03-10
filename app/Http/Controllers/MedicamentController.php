@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreMedicamentRequest;
 use App\Http\Requests\UpdateMedicamentRequest;
-use App\Models\medicament;
+use App\Models\Medicament;
 use Illuminate\Http\Request;
 
 class MedicamentController extends Controller
@@ -13,11 +13,11 @@ class MedicamentController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $medicaments = Medicament::all();
-        return view('medicaments.index', compact('medicaments'));  
-    }
-    
+{
+    $medicaments = Medicament::all();
+    return view('medicaments.create', compact('medicaments'));
+}
+
     /**
      * Show the form for creating a new resource.
      */
@@ -41,7 +41,7 @@ class MedicamentController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(medicament $medicament)
+    public function show(Medicament $medicament)
     {
         //
     }
@@ -49,7 +49,7 @@ class MedicamentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(medicament $medicament)
+    public function edit(Medicament $medicament)
 {
     return view('medicaments.edit', compact('medicament')); 
 }
@@ -58,7 +58,7 @@ class MedicamentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateMedicamentRequest $request, medicament $medicament)
+    public function update(UpdateMedicamentRequest $request, Medicament $medicament)
     {
         $medicament->update($request->all());
         return redirect()->route('medicaments.index')->with('success','Medicament updated');
@@ -67,7 +67,7 @@ class MedicamentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(medicament $medicament)
+    public function destroy(UpdateMedicamentRequest $medicament)
     {
         $medicament->delete();
         return redirect()->route('medicaments.index')->with('success','Medicament deleted');
