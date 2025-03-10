@@ -27,18 +27,24 @@ class PatientController extends Controller
         return redirect()->route('patients.index')->with('success', 'Patient ajouté avec succès.');
     }
 
-    
+
     public function edit(Patient $patient)
     {
         return view('patients.edit', compact('patient'));
     }
 
-    
+
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
         $patient->update($request->all());
         return redirect()->route('patients.index')->with('success', 'Patient mis à jour avec succès.');
     }
+    public function show($id)
+{
+    $patient = Patient::with('constants')->findOrFail($id);
+    return view('patients.show', compact('patient'));
+}
+
 
 
     public function destroy(Patient $patient)

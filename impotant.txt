@@ -1,0 +1,8 @@
+# pour installer des packages de laravel lancer la commande : 
+composer install
+# pour installer les packages node(fullcalendar et sweetalert2 et fullcalendar/bootstrap5) lancer la commande : 
+npm install
+# faire une copié de .env.example sous le nom .env avec la commande:
+cp .env.example .env
+# générer l'app key avec la commande:
+php artisan key:generate
