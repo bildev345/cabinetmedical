@@ -34,7 +34,59 @@ http://www.tooplate.com/view/2098-health
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="{{ asset('css/tooplate-style.css') }}">
-     
+     <style>
+        /* Enhanced dropdown styling */
+        .dropdown-menu {
+            min-width: 300px;
+            padding: 12px 0 !important;
+            border: none;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+        .smoothScroll:hover{
+            transform: translate(0, 4px);
+            border-bottom: 3px solid #c9df0a;
+        }
+
+        .dropdown-header {
+            font-size: 12px;
+            color: #6c757d !important;
+            padding: 8px 20px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .dropdown-divider {
+            margin: 10px 0;
+            border-color: #e9ecef;
+        }
+
+        .dropdown-item {
+            padding: 8px 25px !important;
+            font-size: 14px;
+            color: #495057 !important;
+            transition: all 0.2s ease;
+        }
+
+        .dropdown-item:hover {
+            background-color: #bfd404 !important;
+            color: #28a745 !important;
+            transform: translateX(5px);
+        }
+
+        @media (max-width: 991px) {
+            .dropdown-menu {
+                border-radius: 0;
+                box-shadow: none;
+                margin-top: 0;
+            }
+        }
+        </style>
+
+        <!-- jQuery Script for Hover Functionality -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 <body>
