@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    public function loginForm()
+    {
+        return view('auth.login');
+    }
     public function login(AuthControllerLoginRequest $req)
     {
         if(Auth::attempt(['email'=> $req->email,'password'=>$req->password])){
@@ -20,16 +24,20 @@ class AuthController extends Controller
             'password' => 'Mot de passe incorrect.',
         ]);
     }
-    public function logout()
+    public function registerForm()
     {
-        Auth::logout();
-        // changer la route home par votre route cible
-        return redirect()->route('login')->with('success', 'vous avez déconnecté avec succés');
+        return view('auth.register');
     }
     public function register(AuthControllerRegisterRequest $req)
     {
         $user = User::create($req->all());
         $token = $user->createToken($user->nom);
         return redirect()->route('home')->with('success', 'votre compte à été crée avec succés');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        // changer la route home par votre route cible
+        return redirect()->route('login')->with('success', 'vous avez déconnecté avec succés');
     }
 }

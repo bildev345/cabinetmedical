@@ -23,7 +23,8 @@ use App\Http\Controllers\TypeAnalyseController;
 
 
 
-
+Route::get('/loginFrm', [AuthController::class, 'loginForm'])->name('loginFrm');
+Route::get('/registerFrm', [AuthController::class, 'registerForm'])->name('registerFrm');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
