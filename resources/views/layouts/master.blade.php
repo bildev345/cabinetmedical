@@ -83,6 +83,19 @@ http://www.tooplate.com/view/2098-health
                 margin-top: 0;
             }
         }
+        .logout-btn {
+            background-color: #495057;
+            color: white;
+            border-radius: 5px;
+            padding: 2px 5px;
+        }
+        .logout-btn:hover {
+            background-color: #27292b;
+            color: white;
+            border-radius: 5px;
+            padding: 2px 5px;
+            transition: background-color 0.3s ease-in-out;
+        }
         </style>
 
         <!-- jQuery Script for Hover Functionality -->

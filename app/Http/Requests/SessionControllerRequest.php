@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AuthControllerLoginRequest extends FormRequest
+class SessionControllerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -31,7 +31,7 @@ class AuthControllerLoginRequest extends FormRequest
         return [
             'email.required' => 'email est obligatoire',
             'email.email' => 'email est invalide',
-            'email.exists' => 'vous n\'etes pas un membre',
+            'email.exists' => 'l\'email est incorrecte',
             'password.required' => 'mot de passe est obligatoire',
         ];
     }
