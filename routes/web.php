@@ -15,7 +15,9 @@ use App\Http\Controllers\PrescriptionController;
 use App\Http\Controllers\MedicamentController;
 use App\Http\Controllers\AnalyseController;
 use App\Http\Controllers\ConstantPatientController;
+use App\Http\Controllers\RegisterUserController;
 use App\Http\Controllers\ResultatAnalyseController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TypeAnalyseController;
 
 
@@ -23,17 +25,18 @@ use App\Http\Controllers\TypeAnalyseController;
 
 
 
-Route::get('/loginFrm', [AuthController::class, 'loginForm'])->name('loginFrm');
-Route::get('/registerFrm', [AuthController::class, 'registerForm'])->name('registerFrm');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/login', [SessionController::class, 'create'])->name('login');
+Route::post('/login', [SessionController::class, 'store'])->name('login');
+Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
+
+Route::get('/register', [RegisterUserController::class, 'create'])->name('register');
+Route::post('/register', [RegisterUserController::class, 'store'])->name('register');
 
 
 // Cette route retourne la vue 'home'
 Route::get('/', function () {
     return view('elements.home');
-});
+})->name('home');
 
 // Routes pour les consultations
 Route::resource('consultations', ConsultationController::class);

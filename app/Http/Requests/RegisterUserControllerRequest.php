@@ -3,9 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class AuthControllerRegisterRequest extends FormRequest
+class RegisterUserControllerRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +26,7 @@ class AuthControllerRegisterRequest extends FormRequest
             'prenom' => 'required|max:255',
             'email' => 'required|email|unique:users',
             'role' => 'required',
-            'password' => 'required|confirmed'
+            'password' => 'required|min:6|confirmed'
         ];
     }
     public function messages(): array
@@ -42,7 +41,8 @@ class AuthControllerRegisterRequest extends FormRequest
             'email.unique' => 'cette email est déja utilisé',
             'role.required' => 'le role est obligatoire',
             'password.required' => 'mot de passe est obligatoire',
-            'password.confirmed' => 'les mots de passe ne se ressemble pas'
+            'password.min' => 'mot de passe doit dépasser six caractères',
+            'password.confirmed' => 'les mots de passe ne sont pas identiques'
         ];
     }
 }
