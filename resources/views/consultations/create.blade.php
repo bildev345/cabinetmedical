@@ -9,7 +9,7 @@
                 <label for="date_debut">Date de Début</label>
                 <input type="datetime-local" name="date_debut" id="date_debut" class="form-control" value="{{ request('start') }}">
             </div>
-            <div class="form-group col-md-3"">
+            <div class="form-group col-md-3">
                 <label for="date_fin">Date de Fin</label>
                 <input type="datetime-local" name="date_fin" id="date_fin" class="form-control" value="{{ request('end') }}">
             </div>

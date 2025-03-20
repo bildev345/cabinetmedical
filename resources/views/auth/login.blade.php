@@ -30,6 +30,9 @@
 </head>
 <body>
     <section class="vh-100">
+        @if (session('error'))
+            <div class="alert alert-danger">{{session('error')}}</div>
+        @endif
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
@@ -44,7 +47,7 @@
                     name="email" value="{{old('email')}}" required />
                   @error('email')
                       <p class="text-danger text-sm">{{$message}}</p>
-                  @enderror  
+                  @enderror
                 </div>
 
                 <div data-mdb-input-init class="form-outline mb-3">
@@ -55,15 +58,15 @@
                         <p class="text-danger text-sm">{{$message}}</p>
                     @enderror
                 </div>
-      
+
                 <div class="d-flex justify-content-between align-items-center">
                   <a href="#!" class="text-body">Mot de passe oublié?</a>
                 </div>
-      
+
                 <div class="text-center text-lg-start mt-4 pt-2">
                   <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
                     style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                  <p class="small fw-bold mt-2 pt-1 mb-0">Vous n'avez pas un compte? 
+                  <p class="small fw-bold mt-2 pt-1 mb-0">Vous n'avez pas un compte?
                     <a href="{{route('register')}}" class="link-danger">Souscrire</a>
                   </p>
                 </div>
@@ -71,7 +74,7 @@
             </div>
           </div>
         </div>
-      </section>  
+      </section>
       <script src="js/bootstrap-5.bundle.min.js"></script>
 </body>
 </html>

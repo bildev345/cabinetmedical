@@ -39,9 +39,6 @@ class ConsultationController extends Controller
             'rapport' => 'nullable|string',
             'gratuit' => 'required|boolean',
         ]);
-
-        
-
         try {
             Consultation::create([
                 'date_debut' => $request->date_debut,
