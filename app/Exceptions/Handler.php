@@ -4,9 +4,20 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Throwable;
+use Illuminate\Auth\AuthenticationException;
 
 class Handler extends ExceptionHandler
 {
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        if ($request->expectsJson()) {
+            return response()->json(['message' => $exception->getMessage()], 401);
+        }
+
+        session()->flash('error', 'Vous devez être authentifié pour accéder à cette page.');
+
+        return redirect()->guest($exception->redirectTo() ?? route('login'));
+    }
     /**
      * A list of exception types with their corresponding custom log levels.
      *
@@ -39,11 +50,18 @@ class Handler extends ExceptionHandler
     /**
      * Register the exception handling callbacks for the application.
      */
+    /*public function register()
+    {
+        $this->reportable(function (ModelNotFoundException $e) {
+            // You can log the exception here or display a custom message
+            return response()->view('errors.custom', [], 404);
+        });
+    }*/
     public function register()
-{
-    $this->reportable(function (ModelNotFoundException $e) {
-        // You can log the exception here or display a custom message
-        return response()->view('errors.custom', [], 404);
-    });
-}
+    {
+        $this->renderable(function (ModelNotFoundException $e) {
+            // You can log the exception here or display a custom message
+            return response()->view('errors.custom', [], 404);
+        });
+    }
 }
