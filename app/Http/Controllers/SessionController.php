@@ -12,6 +12,9 @@ class SessionController extends Controller
 {
     public function create()
     {
+        if(Auth::check()){
+            return redirect()->route('home');
+        }
         return view('auth.login');
     }
     public function store(SessionControllerRequest $request)

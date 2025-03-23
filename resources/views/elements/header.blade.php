@@ -12,11 +12,11 @@
                    <span class="date-icon"><i class="fa fa-calendar-plus-o"></i> 6:00 AM - 10:00 PM (Lun-Ven)</span>
                    <span class="email-icon"><i class="fa fa-envelope-o"></i> <a href="#">info@company.com</a></span>
                    @guest
-                         <span><a href="{{route('login')}}">Login</a></span>
-                         <span><a href="{{route('register')}}">Register</a></span>   
+                         <span><a href="{{route('login.create')}}">Login</a></span>
+                         <span><a href="{{route('register.create')}}">Register</a></span>
                    @endguest
                    @auth
-                         <span><button form="form-logout" type="submit" class="logout-btn">Logout</button></span> 
+                         <span><button form="form-logout" type="submit" class="logout-btn">Logout</button></span>
                    @endauth
               </div>
               <form action="{{route('logout')}}" method="POST" id="form-logout" hidden>

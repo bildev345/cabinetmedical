@@ -10,6 +10,7 @@ class RegisterUserController extends Controller
 {
     public function create()
     {
+        Auth::logout();
         return view('auth.register');
     }
     public function store(RegisterUserControllerRequest $request)
