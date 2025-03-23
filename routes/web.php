@@ -20,12 +20,12 @@ use App\Http\Controllers\ResultatAnalyseController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TypeAnalyseController;
 
-Route::get('/login', [SessionController::class, 'create'])->name('login');
-Route::post('/login', [SessionController::class, 'store'])->name('login');
+Route::get('/login', [SessionController::class, 'create'])->name('login.create');
+Route::post('/login', [SessionController::class, 'store'])->name('login.store');
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
-Route::get('/register', [RegisterUserController::class, 'create'])->name('register');
-Route::post('/register', [RegisterUserController::class, 'store'])->name('register');
+Route::get('/register', [RegisterUserController::class, 'create'])->name('register.create');
+Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
 
 
 // Cette route retourne la vue 'home'

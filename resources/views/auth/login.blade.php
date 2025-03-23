@@ -39,7 +39,7 @@
               <img src="{{asset('images/draw2.webp')}}" class="img-fluid" alt="Sample image">
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-              <form action="{{route('login')}}" method="POST">
+              <form action="{{route('login.store')}}" method="POST">
                 @csrf
                 <div data-mdb-input-init class="form-outline mb-4">
                   <label class="form-label" for="form3Example3">Email address</label>
@@ -67,7 +67,7 @@
                   <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg"
                     style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                   <p class="small fw-bold mt-2 pt-1 mb-0">Vous n'avez pas un compte?
-                    <a href="{{route('register')}}" class="link-danger">Souscrire</a>
+                    <a href="{{route('register.create')}}" class="link-danger">Souscrire</a>
                   </p>
                 </div>
               </form>
