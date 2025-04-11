@@ -16,7 +16,7 @@ class Handler extends ExceptionHandler
 
         session()->flash('error', 'Vous devez être authentifié pour accéder à cette page.');
 
-        return redirect()->guest($exception->redirectTo() ?? route('login'));
+        return redirect()->guest($exception->redirectTo() ?? route('login.create'));
     }
     /**
      * A list of exception types with their corresponding custom log levels.
