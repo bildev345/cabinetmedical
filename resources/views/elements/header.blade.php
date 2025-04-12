@@ -13,7 +13,6 @@
                    <span class="email-icon"><i class="fa fa-envelope-o"></i> <a href="#">info@company.com</a></span>
                    @guest
                          <span><a href="{{route('login.create')}}">Login</a></span>
-                         <span><a href="{{route('register.create')}}">Register</a></span>
                    @endguest
                    @auth
                          <span><button form="form-logout" type="submit" class="logout-btn">Logout</button></span>

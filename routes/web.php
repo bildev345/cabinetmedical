@@ -23,8 +23,8 @@ Route::get('/login', [SessionController::class, 'create'])->name('login.create')
 Route::post('/login', [SessionController::class, 'store'])->name('login.store');
 Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
-Route::get('/register', [RegisterUserController::class, 'create'])->name('register.create');
-Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
+//Route::get('/register', [RegisterUserController::class, 'create'])->name('register.create');
+//Route::post('/register', [RegisterUserController::class, 'store'])->name('register.store');
 
 
 // Cette route retourne la vue 'home'
