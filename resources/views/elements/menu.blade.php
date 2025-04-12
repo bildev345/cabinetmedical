@@ -17,7 +17,8 @@
          <div class="collapse navbar-collapse">
               <ul class="nav navbar-nav navbar-right">
                    <li><a href="{{ url('/') }}" class="smoothScroll">Accueil</a></li>
-                   <li class="nav-item dropdown">
+                   @auth
+                       <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
                             Pages
@@ -35,6 +36,8 @@
 
                         </div>
                     </li>
+                   @endauth
+
                    <li><a href="{{ url('/news') }}" class="smoothScroll">Actualités</a></li>
                    <li><a href="#google-map" class="smoothScroll">Contact</a></li>
                    <li class="appointment-btn"><a href="{{ route('consultations.index') }}">Prendre un rendez-vous</a></li>
